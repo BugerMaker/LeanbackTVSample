@@ -1,4 +1,6 @@
 <resources>
 
-    <style name="Theme.TVApplication" parent="@style/Theme.Leanback" />
+    <style name="Theme.TVApplication" parent="@style/Theme.Leanback" >
+        <item name="android:windowBackground">@drawable/bg_gradient_home</item>
+    </style>
 </resources>
