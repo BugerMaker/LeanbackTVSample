@@ -2,7 +2,6 @@ package com.bugermaker.tvapplication.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;

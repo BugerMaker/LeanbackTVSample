@@ -60,14 +60,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginEnd="11dp"
         android:background="@drawable/selector_focus_bg_corner15_without_default_bg"
         android:nextFocusDown="@+id/hg_title"
-        list:iv_image="@drawable/gift"
-        list:tv_content="新人礼包"
-        android:layout_marginEnd="11dp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_app_logo"
         app:layout_constraintRight_toLeftOf="@+id/iv_network"
-        app:layout_constraintTop_toTopOf="@+id/iv_app_logo"/>
+        app:layout_constraintTop_toTopOf="@+id/iv_app_logo"
+        list:iv_image="@drawable/gift"
+        list:tv_content="新人礼包" />
 
     <TextView
         android:id="@+id/iv_app_logo"
@@ -113,4 +113,31 @@
         app:layout_constraintBottom_toBottomOf="@+id/iv_app_logo"
         app:layout_constraintRight_toLeftOf="@+id/tp_time"
         app:layout_constraintTop_toTopOf="@+id/iv_app_logo" />
+
+    <android.support.constraint.Group
+        android:id="@+id/group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="cl_search,cl_history,cl_login,cl_open_vip,tv_ad,iv_app_logo,view,tp_time,iv_network" />
+
+    <com.bugermaker.tvapplication.widgets.TabHorizontalGridView
+        android:id="@+id/hg_title"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="67dp"
+        android:paddingStart="48dp"
+        android:paddingEnd="48dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:focusOutEnd="true"
+        app:focusOutFront="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
