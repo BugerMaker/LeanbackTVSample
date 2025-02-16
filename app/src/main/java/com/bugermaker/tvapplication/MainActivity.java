@@ -1,13 +1,19 @@
 package com.bugermaker.tvapplication;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.leanback.widget.ArrayObjectAdapter;
 import androidx.leanback.widget.HorizontalGridView;
 import androidx.leanback.widget.ItemBridgeAdapter;
+import androidx.leanback.widget.OnChildSelectedListener;
+import androidx.leanback.widget.OnChildViewHolderSelectedListener;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bugermaker.tvapplication.adapter.ContentViewPagerAdapter;
 import com.bugermaker.tvapplication.bean.Title;
 import com.bugermaker.tvapplication.controller.TitlePresenter;
 import com.bugermaker.tvapplication.utils.LocalJsonResolutionUtil;
@@ -32,6 +38,18 @@ public class MainActivity extends FragmentActivity {
 //
         initView();
         initData();
+        initListener();
+    }
+
+    private void initListener() {
+        //节目栏滑动切换
+        mHorizontalGridView.setOnChildViewHolderSelectedListener(new OnChildViewHolderSelectedListener() {
+            @Override
+            public void onChildViewHolderSelected(RecyclerView parent, RecyclerView.ViewHolder child, int position, int subposition) {
+                super.onChildViewHolderSelected(parent, child, position, subposition);
+                viewPager.setCurrentItem(position);
+            }
+        });
     }
 
     private void initView(){
@@ -50,5 +68,10 @@ public class MainActivity extends FragmentActivity {
 
         List<Title.DataBean> data = title.getData();
         mArrayObjectAdapter.addAll(0, data);
+
+        ContentViewPagerAdapter viewPagerAdapter = new ContentViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter.setDataBeans(data);
+        viewPager.setAdapter(viewPagerAdapter);
+
     }
 }
