@@ -1,31 +1,27 @@
 package com.bugermaker.tvapplication;
 
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.leanback.widget.ArrayObjectAdapter;
 import androidx.leanback.widget.HorizontalGridView;
 import androidx.leanback.widget.ItemBridgeAdapter;
-import androidx.leanback.widget.OnChildSelectedListener;
 import androidx.leanback.widget.OnChildViewHolderSelectedListener;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bugermaker.tvapplication.adapter.ContentViewPagerAdapter;
+import com.bugermaker.tvapplication.base.BaseFragmentActivity;
 import com.bugermaker.tvapplication.bean.Title;
-import com.bugermaker.tvapplication.controller.TitlePresenter;
+import com.bugermaker.tvapplication.presenter.TitlePresenter;
 import com.bugermaker.tvapplication.utils.LocalJsonResolutionUtil;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.util.List;
 
 /*
  * Main Activity class that loads {@link MainFragment}.
  */
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends BaseFragmentActivity {
 
     private ArrayObjectAdapter mArrayObjectAdapter;
     private HorizontalGridView mHorizontalGridView;
