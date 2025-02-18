@@ -35,6 +35,10 @@ public abstract class BaseLazyLoadFragment extends Fragment {
         performLazyLoad();
     }
 
+/**
+ * 由于ViewPager的缓存机制
+ * 不能在onResume中设置isVisibleToUser = true;否则将导致懒加载机制失效
+ **/
 //    @Override
 //    public void onResume() {
 //        super.onResume();
