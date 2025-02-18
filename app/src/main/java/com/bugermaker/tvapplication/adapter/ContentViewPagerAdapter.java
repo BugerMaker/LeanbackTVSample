@@ -19,7 +19,7 @@ public class ContentViewPagerAdapter extends FragmentStatePagerAdapter  {
 
     @Override
     public Fragment getItem(int position) {
-        return ContentFragment.newInstance(position);
+        return ContentFragment.newInstance(position, dataBeans.get(position).getTabCode());
     }
 
     @Override
