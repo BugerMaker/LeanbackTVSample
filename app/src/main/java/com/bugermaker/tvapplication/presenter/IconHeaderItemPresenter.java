@@ -1,4 +1,4 @@
-package com.bugermaker.tvapplication.controller;
+package com.bugermaker.tvapplication.presenter;
 
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;

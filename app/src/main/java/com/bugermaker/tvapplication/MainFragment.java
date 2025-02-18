@@ -33,7 +33,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bugermaker.tvapplication.controller.IconHeaderItemPresenter;
+import com.bugermaker.tvapplication.presenter.IconHeaderItemPresenter;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
