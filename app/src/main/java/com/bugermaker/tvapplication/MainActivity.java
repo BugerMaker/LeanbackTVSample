@@ -2,7 +2,6 @@ package com.bugermaker.tvapplication;
 
 import android.os.Bundle;
 
-import androidx.fragment.app.FragmentActivity;
 import androidx.leanback.widget.ArrayObjectAdapter;
 import androidx.leanback.widget.HorizontalGridView;
 import androidx.leanback.widget.ItemBridgeAdapter;
@@ -44,6 +43,24 @@ public class MainActivity extends BaseFragmentActivity {
             public void onChildViewHolderSelected(RecyclerView parent, RecyclerView.ViewHolder child, int position, int subposition) {
                 super.onChildViewHolderSelected(parent, child, position, subposition);
                 viewPager.setCurrentItem(position);
+            }
+        });
+
+        //ViewPager切换时标题也要切换
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mHorizontalGridView.setSelectedPosition(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
     }
