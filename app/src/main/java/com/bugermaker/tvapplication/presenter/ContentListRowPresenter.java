@@ -32,7 +32,7 @@ public class ContentListRowPresenter extends ListRowPresenter {
 //        int paddingLeft = rowViewHolder.getGridView().getPaddingLeft();
 //        Log.i(TAG, "" +
 //                "当前页面的左边距PaddingLeft为" + paddingLeft);
-        ((ViewHolder) holder).getGridView().setPadding(0, 0, 0, 20);
+        ((ViewHolder) holder).getGridView().setPadding(0, 0, 0, 40);
 
     }
 }

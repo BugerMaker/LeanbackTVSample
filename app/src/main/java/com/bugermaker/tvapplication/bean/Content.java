@@ -66,14 +66,14 @@ public class Content implements Parcelable {
     public static class DataBean implements Parcelable{
         private int id;
         private String title;
-        private String showTitle;
+        private boolean showTitle;
         private int contentCode;
         private List<WidgetsBean> widgets;
 
         protected DataBean(Parcel in) {
             id = in.readInt();
             title = in.readString();
-            showTitle = in.readString();
+            showTitle = in.readByte() != 0;
             contentCode = in.readInt();
         }
 
@@ -105,11 +105,11 @@ public class Content implements Parcelable {
             this.title = title;
         }
 
-        public String getShowTitle() {
+        public Boolean getShowTitle() {
             return showTitle;
         }
 
-        public void setShowTitle(String showTitle) {
+        public void setShowTitle(Boolean showTitle) {
             this.showTitle = showTitle;
         }
 
@@ -138,7 +138,7 @@ public class Content implements Parcelable {
         public void writeToParcel(Parcel dest, int flags) {
             dest.writeInt(id);
             dest.writeString(title);
-            dest.writeString(showTitle);
+            dest.writeByte((byte) (showTitle ? 1:0));
             dest.writeInt(contentCode);
         }
 
