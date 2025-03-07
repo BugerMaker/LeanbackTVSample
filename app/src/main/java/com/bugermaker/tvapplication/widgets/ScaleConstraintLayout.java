@@ -54,6 +54,8 @@ public class ScaleConstraintLayout extends ConstraintLayout {
         }
         if (iv_image != null){
             imageView.setImageDrawable(iv_image);
+        }else{
+            imageView.setVisibility(GONE);
         }
 
     }

@@ -12,4 +12,6 @@ public class Constants {
     public static final int TYPE_FOUR = 104;
     public static final int TYPE_FIVE = 105;
     public static final int TYPE_SIX = 106;
+
+    public static final int TYPE_FOOTER = 1111;
 }

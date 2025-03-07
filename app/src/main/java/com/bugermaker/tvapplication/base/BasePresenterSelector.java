@@ -1,7 +1,14 @@
 package com.bugermaker.tvapplication.base;
 
+import android.util.ArrayMap;
+
+import androidx.leanback.widget.ListRow;
 import androidx.leanback.widget.Presenter;
 import androidx.leanback.widget.PresenterSelector;
+
+import com.bugermaker.tvapplication.bean.Footer;
+import com.bugermaker.tvapplication.presenter.ContentListRowPresenter;
+import com.bugermaker.tvapplication.presenter.TypeFooterPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +21,17 @@ public class BasePresenterSelector extends PresenterSelector {
 
     @Override
     public Presenter getPresenter(Object item) {
+        if(item instanceof ListRow){
+            ContentListRowPresenter  listRowPresenter= new ContentListRowPresenter();
+            listRowPresenter.setShadowEnabled(false);
+            listRowPresenter.setSelectEffectEnabled(false);
+            listRowPresenter.setKeepChildForeground(false);
+            return listRowPresenter;
+        } else if (item instanceof Footer){
+            TypeFooterPresenter typeFooterPresenter = new TypeFooterPresenter();
+            return typeFooterPresenter;
+        }
+
         return null;
     }
 

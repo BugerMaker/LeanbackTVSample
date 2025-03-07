@@ -18,9 +18,12 @@ import androidx.leanback.widget.ListRow;
 
 import com.bugermaker.tvapplication.R;
 import com.bugermaker.tvapplication.base.BaseLazyLoadFragment;
+import com.bugermaker.tvapplication.base.BasePresenterSelector;
 import com.bugermaker.tvapplication.bean.Content;
+import com.bugermaker.tvapplication.bean.Footer;
 import com.bugermaker.tvapplication.presenter.ContentListRowPresenter;
 import com.bugermaker.tvapplication.presenter.TypeFiveContentPresenter;
+import com.bugermaker.tvapplication.presenter.TypeFooterPresenter;
 import com.bugermaker.tvapplication.presenter.TypeFourContentPresenter;
 import com.bugermaker.tvapplication.presenter.TypeOneContentPresenter;
 import com.bugermaker.tvapplication.presenter.TypeSixContentPresenter;
@@ -153,6 +156,17 @@ public class ContentFragment extends BaseLazyLoadFragment {
             for (Content.DataBean dataBean : dataBeanList){
                 addItem(dataBean);
             }
+            //最后为每个页面单独添加一个页脚
+            mArrayMainAdapter.add(new Footer());
+
+            //每个页面加载完成后，在这里延迟1s，模拟数据加载，否则看不到Loading的变化
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mPbLoading.setVisibility(View.INVISIBLE);
+                    mVerticalGridView.setVisibility(View.VISIBLE);
+                }
+            }, 1000);
         }
     });
 
@@ -246,15 +260,6 @@ public class ContentFragment extends BaseLazyLoadFragment {
                 addWithTryCatch(new ListRow(headerItemSix, adapterSix));
                 break;
         }
-
-        //这里延迟1s，模拟数据加载，否则看不到Loading的变化
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mPbLoading.setVisibility(View.INVISIBLE);
-                mVerticalGridView.setVisibility(View.VISIBLE);
-            }
-        }, 1000);
     }
 
 
@@ -302,11 +307,11 @@ public class ContentFragment extends BaseLazyLoadFragment {
 
         //这里先暂时使用自定义的ListRowPresenter做简单效果展示
         //看了项目源码，觉得这里用不上自定义PresenterSelector，暂时不做修改
-        ContentListRowPresenter  listRowPresenter= new ContentListRowPresenter();
-        listRowPresenter.setShadowEnabled(false);
-        listRowPresenter.setSelectEffectEnabled(false);
-        listRowPresenter.setKeepChildForeground(false);
-        mArrayMainAdapter = new ArrayObjectAdapter(listRowPresenter);
+//        ContentListRowPresenter  listRowPresenter= new ContentListRowPresenter();
+//        listRowPresenter.setShadowEnabled(false);
+//        listRowPresenter.setSelectEffectEnabled(false);
+//        listRowPresenter.setKeepChildForeground(false);
+        mArrayMainAdapter = new ArrayObjectAdapter(new BasePresenterSelector());
         ItemBridgeAdapter itemBridgeAdapter = new ItemBridgeAdapter(mArrayMainAdapter);
         mVerticalGridView.setAdapter(itemBridgeAdapter);
     }
